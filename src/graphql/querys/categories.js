@@ -2,13 +2,18 @@ import {gql} from '@apollo/client'
 
 const GET_CATEGORIES = gql`
 query GetCategories{
-    categories{
+  categories{
+    name
+    products{
       name
-      products{
-            name
+      id
+      price
+      picture{
+        url
       }
     }
   }
+}
 `;
 
 

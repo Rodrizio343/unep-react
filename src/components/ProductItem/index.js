@@ -1,15 +1,16 @@
 import React from "react";
 import { API_URL } from "config";
 import { Card, Button, } from "antd";
+import './ProductItem.css'
 
 const { Meta } = Card;
 
 const ProductItem = ({ name, price, picture }) => {
   return (
     <Card
+      className="cardItem"
       hoverable
-      style={{ width: 240 }}
-      cover={<img alt="example" src={`${API_URL}${picture}`} />}
+      cover={<img alt={name} src={`${API_URL}${picture}`} />}
     >
       <Meta title={name} description={`$${price}`} />
       <Button type="primary" block>
