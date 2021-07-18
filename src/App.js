@@ -2,7 +2,7 @@ import './App.css';
 import { ApolloProvider } from "@apollo/client";
 import client from "./ApolloConfig";
 import {UserContextProvider} from 'context/UserContext';
-import Header from 'components/Header';
+import Layout from 'components/Layout';
 import Router from 'router/index';
 import 'antd/dist/antd.css';
 
@@ -12,8 +12,9 @@ function App() {
     <>
       <ApolloProvider client={client}>
           <UserContextProvider>
-            <Header />
-            <Router />
+            <Layout>
+              <Router />
+            </Layout>
           </UserContextProvider>
       </ApolloProvider>
     </>

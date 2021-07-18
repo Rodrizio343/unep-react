@@ -45,7 +45,7 @@ const CarouselProducts = ({products}) => {
     itemClass="carousel-item-padding-40-px"
   >
      {products.map((product) => (
-                <ProductItem name={product.name} price={product.price} picture={product.picture[0].url || ""} key={product.id}/>
+                <ProductItem name={product.name} price={product.price} picture={product.picture[0].url} key={product.id}/>
     )) }       
   </Carousel>
   )

@@ -1,5 +1,4 @@
 import React from "react";
-import { API_URL } from "config";
 import { Card, Button, } from "antd";
 import './ProductItem.css'
 
@@ -10,12 +9,13 @@ const ProductItem = ({ name, price, picture }) => {
     <Card
       className="cardItem"
       hoverable
-      cover={<img alt={name} src={`${API_URL}${picture}`} />}
+      cover={<img alt={name} src={picture} />}
     >
       <Meta title={name} description={`$${price}`} />
-      <Button type="primary" block>
+      <Button type="primary">
         <i className="fa fa-shopping-cart"></i>
       </Button>
+      <Button type="primary">Ver detalle</Button>
     </Card>
   );
 };

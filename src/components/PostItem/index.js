@@ -15,7 +15,7 @@ const PostItem = ({title, description, id}) => {
         <Card
             hoverable
             style={{ width: "100%" }}
-            cover={<img alt="example" src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png" />}
+            cover={<img alt="example" src="https://www.coldist.com/wp-content/uploads/2019/07/Friends-Toasting-With-Wine.jpg" />}
         >
             <Meta title={title} description={description} />
             <Button type='primary' onClick={handleClick}>Ver post</Button>
