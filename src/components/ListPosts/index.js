@@ -3,12 +3,13 @@ import { useQuery } from '@apollo/client'
 import {GET_ALL_POSTS} from 'graphql/querys/posts';
 import PostItem from 'components/PostItem'
 import './ListPosts.css'
+import Spinner from 'components/Spinner';
 
 const ListPosts = () => {
     const {data, error, loading} = useQuery(GET_ALL_POSTS)
     const {posts} = data || "";
 
-    if(loading) return "Cargando..."
+    if(loading) return <Spinner />
     if(error) return "Ups, algo salio mal..."
 
     return (
