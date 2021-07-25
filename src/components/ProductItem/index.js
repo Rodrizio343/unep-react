@@ -1,6 +1,7 @@
 import React from "react";
-import { Card, Button, } from "antd";
+import { Card } from "antd";
 import './ProductItem.css'
+import {InfoCircleOutlined, ShoppingCartOutlined} from "@ant-design/icons"
 
 const { Meta } = Card;
 
@@ -10,12 +11,12 @@ const ProductItem = ({ name, price, picture }) => {
       className="cardItem"
       hoverable
       cover={<img alt={name} src={picture} />}
+      actions={[
+        <InfoCircleOutlined />,
+        <ShoppingCartOutlined />
+      ]}
     >
       <Meta title={name} description={`$${price}`} />
-      <Button type="primary">
-        <i className="fa fa-shopping-cart"></i>
-      </Button>
-      <Button type="primary">Ver detalle</Button>
     </Card>
   );
 };
