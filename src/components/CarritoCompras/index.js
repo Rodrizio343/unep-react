@@ -1,28 +1,35 @@
-import React, { useState } from "react";
-import { Drawer } from "antd";
+import React from "react";
+import { Button, Drawer } from "antd";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  carritoCompra,
+  closeCarrito,
+  showCarrito,
+} from "redux/productos/carritoSlice";
 
 const CarritoCompras = () => {
-  const [visible, setVisible] = useState(false);
+  const showCart = useSelector(showCarrito);
+  const carrito = useSelector(carritoCompra);
+  const dispatch = useDispatch();
 
-  const showDrawer = () => {
-    setVisible(true);
-  };
-
-  const onClose = () => {
-    setVisible(false);
-  };
+const onClose = () => {
+  dispatch(closeCarrito())
+}
 
   return (
     <Drawer
-      title="Basic Drawer"
+      title="Tu carrito"
       placement="right"
-      closable={false}
+      closable={true}
       onClose={onClose}
-      visible={visible}
+      visible={showCart}
     >
-      <p>Some contents...</p>
-      <p>Some contents...</p>
-      <p>Some contents...</p>
+      <ul>
+        {!carrito
+          ? carrito.map((prod) => <li>{prod.name}</li>)
+          : "Carrito vacio"}
+      </ul>
+      <Button type='primary'>Comprar</Button>
     </Drawer>
   );
 };
