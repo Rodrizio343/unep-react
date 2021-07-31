@@ -5,6 +5,7 @@ export const carritoSlice = createSlice({
   initialState: {
     carritoCompra: [],
     productos: [],
+    totalProducts: 0,
     showCarrito: false,
     loading: false,
     error: false,
@@ -17,16 +18,31 @@ export const carritoSlice = createSlice({
       state.showCarrito = false;
     },
     addProduct: (state, { payload: producto }) => {
-      state.carritoCompra.push(producto);
-      console.log(state.carritoCompra)
+      let productExist = state.carritoCompra.find((prod) => {
+        return prod.id === producto.id;
+      });
+      if (!productExist) {
+        state.carritoCompra.push({ ...producto, cantidad: 1 });
+      } else {
+        productExist.cantidad += 1;
+      }
+    },
+    countProducts: (state) => {
+      let resultado = 0;
+      state.carritoCompra.forEach((prod) => {
+        resultado += prod.cantidad;
+      });
+      state.totalProducts = resultado;
     },
   },
 });
 
-export const { openCarrito, closeCarrito , addProduct} = carritoSlice.actions;
+export const { openCarrito, closeCarrito, addProduct, countProducts } = carritoSlice.actions;
 
 export const showCarrito = (state) => state.carrito.showCarrito;
 
-export const carritoCompra = (state) => state.carrito.carritoCompra;
+export const getCarrito = (state) => state.carrito.carritoCompra;
+
+export const getTotalProducts = (state) => state.carrito.totalProducts;
 
 export default carritoSlice.reducer;

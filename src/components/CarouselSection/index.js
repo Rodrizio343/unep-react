@@ -16,7 +16,7 @@ const CarouselSection = () => {
 
     return (
         <div>
-          {categories.map((category) => <CarouselProducts products={category.products}/>)}
+          {categories.map((category) => <CarouselProducts products={category.products} key={category.id} />)}
         </div>
     )
 }

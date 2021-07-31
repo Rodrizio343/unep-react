@@ -2,14 +2,15 @@ import React from "react";
 import { Button, Drawer } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  carritoCompra,
   closeCarrito,
+  getCarrito,
   showCarrito,
 } from "redux/productos/carritoSlice";
+import ListItem from "components/ListItem";
 
 const CarritoCompras = () => {
   const showCart = useSelector(showCarrito);
-  const carrito = useSelector(carritoCompra);
+  const carrito = useSelector(getCarrito);
   const dispatch = useDispatch();
 
 const onClose = () => {
@@ -23,10 +24,11 @@ const onClose = () => {
       closable={true}
       onClose={onClose}
       visible={showCart}
+      width={300}
     >
-      <ul>
-        {!carrito
-          ? carrito.map((prod) => <li>{prod.name}</li>)
+      <ul style={{listStyle:'none', padding:'unset'}}>
+        {carrito
+          ? carrito.map((prod) => <ListItem name={prod.name} price={prod.price} picture={prod.picture[0].url} number={prod.cantidad} key={prod.id} />)
           : "Carrito vacio"}
       </ul>
       <Button type='primary'>Comprar</Button>
