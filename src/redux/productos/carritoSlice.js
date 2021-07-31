@@ -27,6 +27,13 @@ export const carritoSlice = createSlice({
         productExist.cantidad += 1;
       }
     },
+    removeFromCart: (state, {payload: producto}) => {
+      let productToRemove = state.carritoCompra.find((prod) => {
+        return prod.name === producto.name
+      })
+      let indexRemove = state.carritoCompra.indexOf(productToRemove) - 1;
+      state.carritoCompra.splice(indexRemove, 1);
+    },
     countProducts: (state) => {
       let resultado = 0;
       state.carritoCompra.forEach((prod) => {
@@ -37,7 +44,7 @@ export const carritoSlice = createSlice({
   },
 });
 
-export const { openCarrito, closeCarrito, addProduct, countProducts } = carritoSlice.actions;
+export const { openCarrito, closeCarrito, addProduct, countProducts, removeFromCart } = carritoSlice.actions;
 
 export const showCarrito = (state) => state.carrito.showCarrito;
 

@@ -8,7 +8,9 @@ import { addProduct } from "redux/productos/carritoSlice";
 const { Meta } = Card;
 
 const ProductItem = ({ product, name, price, picture }) => {
+  
   const dispatch = useDispatch();
+
   return (
     <Card
       className="cardItem"

@@ -27,9 +27,9 @@ const onClose = () => {
       width={300}
     >
       <ul style={{listStyle:'none', padding:'unset'}}>
-        {carrito
-          ? carrito.map((prod) => <ListItem name={prod.name} price={prod.price} picture={prod.picture[0].url} number={prod.cantidad} key={prod.id} />)
-          : "Carrito vacio"}
+        {!carrito.length
+          ? "Carrito vacio :("
+          : carrito.map((prod) => <ListItem name={prod.name} price={prod.price} picture={prod.picture[0].url} number={prod.cantidad} key={prod.id} />)}
       </ul>
       <Button type='primary'>Comprar</Button>
     </Drawer>

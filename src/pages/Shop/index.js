@@ -6,7 +6,6 @@ const Shop = () => {
     return (
         <div>
             <CarouselSection />
-            <ListItem />
         </div>
     )
 }
